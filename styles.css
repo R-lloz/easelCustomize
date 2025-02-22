@@ -1,0 +1,63 @@
+body {
+    font-family: "Poiret One", "Hiragino Kaku Gothic ProN";
+    font-weight: 100;
+    font-style: normal;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f4f4f4;
+}
+
+.calendar-container {
+    text-align: center;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    margin-bottom: 10px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    width: 40px;
+    padding: 10px;
+    text-align: center;
+    border: 1px solid #ddd;
+}
+td {
+    height: 50px;
+}
+
+.today {
+    position: relative;
+}
+
+.today::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+    border-right: 10px solid transparent;
+    border-top: 10px solid #777;
+}
+
+.holiday {
+    background-color: #ffcccb;
+    font-weight: bold;
+}
+
+.date-desc {
+    font-size: 0.8em;
+    color: #777;
+}
