@@ -1,1 +1,26 @@
-
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>Pomodoro Timer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code&family=Poiret+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="timer-container">
+        <div id="timer">25:00</div>
+        <div class="buttons">
+            <button id="start" class="btn-alarm"></button>
+            <button id="pause" class="btn-alarm"></button>
+            <button id="reset" class="btn-alarm"></button>
+        </div>
+        <div class="counter">
+            <h2>Sessions Completed: <span id="session-count">0</span></h2>
+        </div>
+    </div>
+    <audio id="alarm" src="alarm.mp3"></audio>
+    <script src="script.js"></script>
+</body>
+</html>
