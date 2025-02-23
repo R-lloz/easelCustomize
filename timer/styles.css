@@ -9,19 +9,14 @@ body {
     margin: 0;
     background-color: #f4f4f4;
 }
-
-svg {
-    fill: #ffcccb;
-    stroke: #ffcccb;
-}
   
 .timer-container {
     text-align: center;
 }
 
 #timer {
-    font-size: 5em;
-    padding: 20px;
+    font-size: 4em;
+    padding: 35px;
 }
 
 .btn-alarm {
@@ -34,7 +29,7 @@ svg {
     border: none;
     cursor: pointer; 
     background-color: transparent;
-    padding: 8px;
+    margin: 0 15px;
 }
 
 #start {
