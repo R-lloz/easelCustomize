@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>NZ Countdown</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poiret+One&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Poiret One", "Hiragino Kaku Gothic ProN", sans-serif;
+      font-weight: 100;
+      font-style: normal;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #f4f4f4;
+      color: #333;
+    }
+
+    .countdown-container {
+      text-align: center;
+      background: white;
+      padding: 30px 40px;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      min-width: 280px;
+    }
+
+    h2 {
+      font-size: 1.1rem;
+      font-weight: normal;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+      color: #555;
+    }
+
+    .counter-wrapper {
+      display: flex;
+      justify-content: center;
+      align-items: baseline;
+      gap: 8px;
+      margin-bottom: 24px;
+    }
+
+    .days {
+      font-size: 5rem;
+      line-height: 1;
+      font-weight: normal;
+      letter-spacing: 0.05em;
+      color: #222;
+    }
+
+    .unit {
+      font-size: 1rem;
+      letter-spacing: 0.1em;
+      color: #777;
+    }
+
+    /* カレンダーの table/td とトーンを合わせたグリッド枠 */
+    .sub-timer {
+      display: flex;
+      justify-content: center;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      overflow: hidden;
+    }
+
+    .sub-box {
+      flex: 1;
+      padding: 10px 14px;
+      border-right: 1px solid #ddd;
+      background: #fafafa;
+    }
+
+    .sub-box:last-child {
+      border-right: none;
+    }
+
+    .sub-value {
+      display: block;
+      font-size: 1.25rem;
+      color: #333;
+    }
+
+    .sub-label {
+      font-size: 0.75rem;
+      color: #777;
+      letter-spacing: 0.05em;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="countdown-container">
+    <h2>New Zealand</h2>
+
+    <div class="counter-wrapper">
+      <span class="days" id="days">--</span>
+      <span class="unit">DAYS</span>
+    </div>
+
+    <div class="sub-timer">
+      <div class="sub-box">
+        <span class="sub-value" id="hours">00</span>
+        <span class="sub-label">HOURS</span>
+      </div>
+      <div class="sub-box">
+        <span class="sub-value" id="minutes">00</span>
+        <span class="sub-label">MINS</span>
+      </div>
+      <div class="sub-box">
+        <span class="sub-value" id="seconds">00</span>
+        <span class="sub-label">SECS</span>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // 2026年11月11日 00:00:00 (JST)
+    const targetDate = new Date('2026-11-11T00:00:00+09:00').getTime();
+
+    function updateCountdown() {
+      const now = new Date().getTime();
+      const diff = targetDate - now;
+
+      if (diff <= 0) {
+        document.querySelector('.counter-wrapper').innerHTML = "<span class='days'>Departure! ✈️</span>";
+        document.querySelector('.sub-timer').style.display = 'none';
+        return;
+      }
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+      document.getElementById('days').textContent = days;
+      document.getElementById('hours').textContent = String(hours).padStart(2, '0');
+      document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
+      document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+    }
+
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+  </script>
+</body>
+</html>
